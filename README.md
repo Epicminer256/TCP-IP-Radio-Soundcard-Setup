@@ -26,7 +26,7 @@ chmod +x ~/tncattach_amd64/tncattach
 cp /usr/share/doc/direwolf/examples/direwolf.conf ~/direwolf.conf
 ```
 
-### Now if everything went to plan, we are going to run Direwolf First, then TNCAttach ()
+### Now if everything went to plan, we are going to run Direwolf First, then TNCAttach
 
 ```sh
 # Run direwolf in one terminal
