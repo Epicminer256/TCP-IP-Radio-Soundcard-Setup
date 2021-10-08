@@ -37,6 +37,8 @@ direwolf -c ~/direwolf.conf
 
 sudo ~/tncattach_amd64/tncattach -T -H localhost -P 8001 --ethernet --mtu 576 --noipv6 --ipv4 10.0.0.2/24
 
-# Or use TMUX instead
+
+
+# Or use TMUX to run both the direwolf window and the tncattach window
 tmux new-session \; send-keys 'direwolf -c ~/direwolf.conf' C-m \; split-window -v \; send-keys 'sleep 1 && sudo ~/tncattach_amd64/tncattach -T -H localhost -P 8001 --ethernet --mtu 576 --noipv6 --ipv4 10.0.0.2/24' C-m
 ```
