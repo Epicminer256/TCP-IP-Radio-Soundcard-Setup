@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TCP-IP To Radio - Epicminer256</title>
+        <link rel="stylesheet" href="/termlegacy/main.css" >
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8">
+    </head>
+    <body>
+        <header>
+            <h1>Epicminer256</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/projects.html">Projects</a>
+            </nav>
+        </header>
+        <main>
+            <h1>TCP-IP To Radio</h1>
+            <p>This is a tutorial on how to get TCP-IP connection though a soundcard</p>
+            <h1>Ubuntu or Debian Setup</h1>
+            <p>(This is written only for debian systems at the moment)</p>
+            <h3>First, you are going to install Direwolf and TNCAttach</h3>
+            <pre><code class="language-sh"># Install needed programs using this command
+            sudo apt install direwolf wget
+
+
+            # Downloads latest build of TNCAttach and places itself inside your home directory
+            # The folder should be ~/tncattach_amd64/
+            # You may need to replace this url in the future
+            cd ~/
+            wget https://github.com/markqvist/tncattach/releases/latest/download/tncattach_0.1.9_amd64.tar.xz
+            tar -xf tncattach*.tar.xz
+            chmod +x ~/tncattach_amd64/tncattach
+            </code></pre>
+            <h3>Now you are going to copy the default config of direwolf to your home directory</h3>
+            <pre><code class="language-sh">cp /usr/share/doc/direwolf/examples/direwolf.conf ~/direwolf.conf
+            </code></pre>
+            <h3>Now if everything went to plan, we are going to run Direwolf First, then TNCAttach</h3>
+            <pre><code class="language-sh"># Run direwolf in one terminal
+            direwolf -c ~/direwolf.conf
+
+            # Now run tncattach
+            # Make sure the last IP is changed on every system
+
+            sudo ~/tncattach_amd64/tncattach -T -H localhost -P 8001 --ethernet --mtu 576 --noipv6 --ipv4 10.0.0.2/24
+
+
+
+            # Or use TMUX to run both the direwolf window and the tncattach window
+            tmux new-session \; send-keys 'direwolf -c ~/direwolf.conf' C-m \; split-window -v \; send-keys 'sleep 1 &amp;&amp; sudo ~/tncattach_amd64/tncattach -T -H localhost -P 8001 --ethernet --mtu 576 --noipv6 --ipv4 10.0.0.2/24' C-m
+            </code></pre>
+
+        </main>
+        <aside>
+            <h1>Socials</h1>
+            <a href="https://discord.gg/w8fdWKAkGh" class="discord-icon">Discord</a>
+            <a href="https://github.com/Epicminer256" class="github-icon">Github</a>
+            <a href="https://www.youtube.com/channel/UCkURfrhI4qES__Q6SZU51cg" class="youtube-icon">Youtube</a>
+        </aside>
+        <footer>
+            Website not subject to license. Projects listed on this site are subject to their own licenses
+        </footer>
+    </body>
+</html>
